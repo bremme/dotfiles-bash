@@ -66,6 +66,13 @@ fi
 
 # CUSTOM #######################################################################
 
+### PATH #######################################################################
+
+MY_BIN_PATH="/media/bremme/samevo/ssd-data/bin";
+MY_SCRIPTS_PATH="/media/bremme/samevo/ssd-data/scripts";
+
+export PATH=$PATH:$MY_BIN_PATH:$MY_SCRIPTS_PATH;
+
 ### KEYMAPPINGS ################################################################
 
 # auto complete history search
@@ -121,8 +128,16 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 ### OTHER SOURCE ###############################################################
-source .bash_colors;
-source .bash_prompt;
+source "$HOME/.bash_colors"
+source "$HOME/.bash_prompt"
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 
+if [ $(which z.sh) ]; then
+	echo "Loading z.sh";
+	source z.sh;
+else
+	echo "Do you want to install z? [y/n]:"
+	read confirm
+	echo $confirm;
+fi

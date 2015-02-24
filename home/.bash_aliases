@@ -41,3 +41,15 @@ alias rlb="source ~/.bashrc"
 # grep process
 alias proc="ps aux | grep"
 
+# mkdir -> always make parent and verbose output
+alias mkdir="mkdir -pv"
+alias mkdirb="/bin/mkdir"
+
+alias p="ping"
+
+alias ls-packages="/bin/cat /var/log/apt/history.log | grep -Po '(?<=apt-get install ).+' | tr ' ' '\n' | sort"
+
+alias ls-dirsize-gb="du --max-depth=1 --human-readable --threshold=1G --one-file-system | sort --general-numeric-sort"
+alias ls-dirsize-mb="du --max-depth=1 --human-readable --threshold=1M --one-file-system | sort --general-numeric-sort"
+alias ls-dirsize-gb-n="du --human-readable --threshold=1G --one-file-system | sort --general-numeric-sort"
+alias ls-dirsize-mb-n="du --human-readable --threshold=1M --one-file-system | sort --general-numeric-sort"

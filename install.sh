@@ -7,4 +7,4 @@ if [ "$(id -u)" != "0" ]; then
 fi  
 
 # install usefull terminal packages
-sudo apt-get install -y dircolors cowsay toilet fortune python-pygments htop
+sudo apt-get install -y dircolors cowsay toilet fortune python-pygments htop tree

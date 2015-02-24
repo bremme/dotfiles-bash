@@ -23,10 +23,3 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
-
-### PATH #######################################################################
-
-MY_BIN_PATH="/media/bremme/samevo/ssd-data/bin";
-MY_SCRIPTS_PATH="/media/bremme/samevo/ssd-data/scripts";
-
-export PATH=$PATH:$MY_BIN_PATH:$MY_SCRIPTS_PATH;
