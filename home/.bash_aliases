@@ -11,7 +11,7 @@ else
 fi
 
 if [ -x /usr/bin/dircolors ]; then
-    alias ls='ls --color=auto'
+    alias ls='ls -h --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
     alias grep='grep --color=auto'
@@ -22,11 +22,18 @@ if [ -x /usr/bin/dircolors ]; then
     alias la='ls -A'
     alias l='ls -CF'
 fi
+# cd commands
+alias ..="cd .."
+alais ...="cd ../.."
+alias ....="cd ../../.."
+alias chome="cd $HOME"
+alias croot="cd /"
+alias cetc="cd /etc"
 
 # apt-get commands
-alias agi="sudo apt-get install"
-alias agr="sudo apt-get remove"
-alias agp="sudo apt-get purge"
+alias sagi="sudo apt-get install"
+alias sagr="sudo apt-get remove"
+alias sagp="sudo apt-get purge"
 
 # sudo commands
 alias snano="sudo nano"
@@ -46,6 +53,7 @@ alias mkdir="mkdir -pv"
 alias mkdirb="/bin/mkdir"
 
 alias p="ping"
+alias wanip="$(wget -qO- http://ipecho.net/plain)"
 
 alias ls-packages="/bin/cat /var/log/apt/history.log | grep -Po '(?<=apt-get install ).+' | tr ' ' '\n' | sort"
 
