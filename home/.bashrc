@@ -127,17 +127,37 @@ if [ -x /usr/bin/dircolors ]; then
     test -r $DIRCOLORS && eval "$(dircolors -b $DIRCOLORS)" || eval "$(dircolors -b)";
 fi
 
+### FUNCTIONS ##################################################################
+install_z () {
+	echo "Do you want to install z? [Y/n]:"
+	read confirm;
+	if [ $confirm == "Y" ]; then
+		if [ -x /usr/bin/wget ]; then
+			wget https://raw.githubusercontent.com/rupa/z/master/z.sh -O "$HOME/z.sh";
+			if [ $? -eq 0 ]; then
+				echo "Installed z.sh";
+				source z.sh
+			else
+				echo "Failed to install z.sh";
+				echo "exit code wget: $?";
+			fi
+		else
+			echo "Failed to install z.sh since wget is not installed";
+		fi
+	fi
+}
+
 ### OTHER SOURCE ###############################################################
 source "$HOME/.bash_colors"
 source "$HOME/.bash_prompt"
-source "$HOME/.homesick/repos/homeshick/homeshick.sh"
-source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
+if [ -d "$HOME/.homesick" ]; then
+	source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+	source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
+fi
 
-if [ $(which z.sh) ]; then
+if [ -x z.sh ]; then
 	echo "Loading z.sh";
 	source z.sh;
 else
-	echo "Do you want to install z? [y/n]:"
-	read confirm
-	echo $confirm;
+	install_z;
 fi
