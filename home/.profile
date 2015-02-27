@@ -23,3 +23,11 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
+# set MATLABPATH if matlab is installed
+if [ -x /usr/bin/matlab ] || [ -x "$HOME/bin/matlab" ] ; then
+	MATLABUSERPATH="$HOME/Development/matlab/lib";
+	MATLABPATH="$MATLABUSERPATH";
+	export MATLABPATH;
+	echo "Added $MATLABUSERPATH to MATLABPATH";
+fi
