@@ -129,23 +129,59 @@ fi
 
 ### FUNCTIONS ##################################################################
 install_z () {
-	echo "Do you want to install z? [Y/n]:"
+	printf "Do you want to install z? [Y/n]:"
 	read confirm;
 	if [ $confirm == "Y" ]; then
 		if [ -x /usr/bin/wget ]; then
-			wget https://raw.githubusercontent.com/rupa/z/master/z.sh -O "$HOME/z.sh";
+			printf "Install z to ['$HOME']?"
+			read response;
+			if [ -n "$response" ]; then
+				if [ -d "$response" ]; then
+					z_install_path="$response";
+				else
+					printf "Directory $reponse does not exist, create [Y/n]?";
+					read confirm;
+					if [ $confirm == "Y" ]; then
+						mkdir -p $response;
+						z_install_path = "$response";
+					else
+						printf "Cancelled, installing z.sh to '$HOME'\n";
+					fi 
+				fi
+			else
+				z_install_path="$HOME";
+			fi
+			if [ -f "$z_install_path/z.sh" ]; then
+				printf "Already exists '$z_install_path/z.sh',overwrite? [Y/n]"
+				read confirm;
+				if [ $confirm != "Y" ]; then
+					printf "Exit installing z.sh.\n";
+					exit 0;							
+				fi 
+			fi
+			printf "Installing z.sh to '$z_install_path/z.sh'\n";
+			wget -q https://raw.githubusercontent.com/rupa/z/master/z.sh -O "$z_install_path/z.sh";
 			if [ $? -eq 0 ]; then
-				echo "Installed z.sh";
+				printf "Installed z.sh\n";
 				source z.sh
 			else
-				echo "Failed to install z.sh";
-				echo "exit code wget: $?";
+				printf "Failed to install z.sh\n";
+				printf "Exit code wget: $?";
 			fi
 		else
-			echo "Failed to install z.sh since wget is not installed";
+			printf "Failed to install z.sh since wget is not installed\n";
 		fi
 	fi
 }
+
+gitlazy () {
+	git add .
+	git commit -a -m $1
+	git push
+}
+
+gedit() { command gedit "$@" > /dev/null 2>&1 & }
+
 
 ### OTHER SOURCE ###############################################################
 source "$HOME/.bash_colors"
@@ -155,7 +191,7 @@ if [ -d "$HOME/.homesick" ]; then
 	source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 fi
 
-if [ -x z.sh ]; then
+if [ -x $(type -P z.sh) ]; then
 	echo "Loading z.sh";
 	source z.sh;
 else

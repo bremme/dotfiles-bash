@@ -12,6 +12,7 @@ fi
 
 if [ -x /usr/bin/dircolors ]; then
     alias ls='ls -h --color=auto'
+    alias lsb='/bin/ls'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
     alias grep='grep --color=auto'
@@ -24,16 +25,24 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 # cd commands
 alias ..="cd .."
-alais ...="cd ../.."
+alias ...="cd ../.."
 alias ....="cd ../../.."
 alias chome="cd $HOME"
 alias croot="cd /"
 alias cetc="cd /etc"
 
+alias chmox='chmod +x'
+
+alias silence='2>&1 /dev/null'
 # apt-get commands
 alias sagi="sudo apt-get install"
 alias sagr="sudo apt-get remove"
 alias sagp="sudo apt-get purge"
+
+
+#docker
+alias sdocker="sudo docker"
+alias ls-docker="docker inspect -f '{{ range $key, $value := .Volumes }}{{ $value }} {{ end }}'"
 
 # sudo commands
 alias snano="sudo nano"
