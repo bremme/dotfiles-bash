@@ -7,6 +7,7 @@
         helper = cache
 [core]
         editor = nano
+	excludesfile = /home/bremme/.gitignore_global
 [color]
         diff = auto 
         ui = auto
