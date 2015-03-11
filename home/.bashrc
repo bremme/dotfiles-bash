@@ -70,7 +70,7 @@ fi
 
 MY_BIN_PATH="/media/bremme/samevo/ssd-data/bin";
 MY_SCRIPTS_PATH="/media/bremme/samevo/ssd-data/scripts";
-NODEJS_BIN_PATH="/home/bremme/.node/bin":
+NODEJS_BIN_PATH="/home/bremme/.node/bin";
 
 export PATH=$NODEJS_BIN_PATH:$MY_BIN_PATH:$MY_SCRIPTS_PATH:$PATH;
 

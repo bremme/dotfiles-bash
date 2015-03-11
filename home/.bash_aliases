@@ -33,7 +33,7 @@ alias cetc="cd /etc"
 
 alias chmox='chmod +x'
 
-alias silence='2>&1 /dev/null'
+alias silence='> /dev/null 2>&1 &'
 # apt-get commands
 alias sagi="sudo apt-get install"
 alias sagr="sudo apt-get remove"
