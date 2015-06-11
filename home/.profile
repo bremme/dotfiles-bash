@@ -33,3 +33,4 @@ if [ -x /usr/bin/matlab ] || [ -x "$HOME/bin/matlab" ] ; then
 		echo "Added $MATLABUSERPATH to MATLABPATH";
 	fi
 fi
+PATH="/usr/games:$PATH"

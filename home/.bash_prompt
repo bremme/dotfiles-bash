@@ -41,9 +41,9 @@ if [[ -f "$HOME/.bash_colors" ]]; then
   source $HOME/.bash_colors;
   # HH:MM [ user@host ] ~/current/path
     # currentdir $
+    export GIT_PS1_SHOWDIRTYSTATE=1
     PS1="\033]0;$USER@$HOSTNAME\007 ${debian_chroot:+($debian_chroot)} \[$IPurple\]\t \[$BIBlue\][ \u@\[$BIGreen\]\H ] \[$BIWhite\]\w\n\W \[$BIGreen\]\$\[$Color_Off\] "
 fi
-
 
 
 

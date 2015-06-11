@@ -187,6 +187,16 @@ gedit() { command gedit "$@" > /dev/null 2>&1 & }
 ### OTHER SOURCE ###############################################################
 source "$HOME/.bash_colors"
 source "$HOME/.bash_prompt"
+
+source "$HOME/.oh-my-git/prompt.sh"
+
+for f in "$HOME/.bash_completion.d/*"; do source $f; done
+
+# Bash completion
+if [ -f /etc/bash_completion ]; then
+	source  /etc/bash_completion
+fi
+
 if [ -d "$HOME/.homesick" ]; then
 	source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 	source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"

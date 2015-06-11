@@ -34,6 +34,7 @@ alias cetc="cd /etc"
 alias chmox='chmod +x'
 
 alias silence='> /dev/null 2>&1 &'
+
 # apt-get commands
 alias sagi="sudo apt-get install"
 alias sagr="sudo apt-get remove"
@@ -43,13 +44,14 @@ alias sagp="sudo apt-get purge"
 #docker
 alias sdocker="sudo docker"
 alias ls-docker="docker inspect -f '{{ range $key, $value := .Volumes }}{{ $value }} {{ end }}'"
+alias dockerc="docker-compose"
 
 # sudo commands
 alias snano="sudo nano"
 alias sgedit="sudo gedit"
 
 # ssh commands
-alias sshx="ssh -X"
+alias sshx="ssh -X -o ServerAliveInterval=30"
 
 # reload bash
 alias rlb="source ~/.bashrc"
@@ -61,12 +63,18 @@ alias proc="ps aux | grep"
 alias mkdir="mkdir -pv"
 alias mkdirb="/bin/mkdir"
 
+# network commands
 alias p="ping"
-alias wanip="$(wget -qO- http://ipecho.net/plain)"
-
+alias wanip="echo $(wget -qO- http://ipecho.net/plain)"
+alias lanip="echo $(ip route get 8.8.8.8 | awk 'NR==1 {print $NF}')"
 alias ls-packages="/bin/cat /var/log/apt/history.log | grep -Po '(?<=apt-get install ).+' | tr ' ' '\n' | sort"
 
+# filesystem size
 alias ls-dirsize-gb="du --max-depth=1 --human-readable --threshold=1G --one-file-system | sort --general-numeric-sort"
 alias ls-dirsize-mb="du --max-depth=1 --human-readable --threshold=1M --one-file-system | sort --general-numeric-sort"
 alias ls-dirsize-gb-n="du --human-readable --threshold=1G --one-file-system | sort --general-numeric-sort"
 alias ls-dirsize-mb-n="du --human-readable --threshold=1M --one-file-system | sort --general-numeric-sort"
+
+# node apps
+alias doctoc="doctoc --title '# Table of Contents'"
+alias doctocb="$HOME/npm/bin/doctoc"
