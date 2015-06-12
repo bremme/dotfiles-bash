@@ -202,7 +202,7 @@ if [ -d "$HOME/.homesick" ]; then
 	source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 fi
 
-if [ -x $(type -P z.sh) ]; then
+if [ -x "$(type -P z.sh)" ]; then
 	echo "Loading z.sh";
 	source z.sh;
 else

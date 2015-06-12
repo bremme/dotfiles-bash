@@ -2,12 +2,32 @@
 
 echo "Loading .bash_aliases";
 
+installPackage() {
+    local package=$1;
+    printf "Do you want to install $package? [Y/n]:"
+    read confirm;
+    if [ $confirm == "Y" ]; then
+        printf "Installing $1\n"
+        sudo apt-get install -y $package;
+        printf "Installed $package\n";
+        return 0;
+    else
+        return 1;
+    fi
+}
+
 
 if [ -x /usr/bin/pygmentize ]; then
 	alias cat="pygmentize -g";
 	alias catb="/bin/cat";
-else
-  echo "pygmentize not installed, using regular cat"
+else    
+    if installPackage "python-pygments"; then
+        alias cat="pygmentize -g";
+        alias catb="/bin/cat";    
+    else
+        echo "pygmentize not installed, using regular cat"
+    fi
+    
 fi
 
 if [ -x /usr/bin/dircolors ]; then
